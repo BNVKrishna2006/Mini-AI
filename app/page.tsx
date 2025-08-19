@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-
 export default function Home() {
 const [msg, setMsg] = useState("");
 const [log, setLog] = useState<string[]>([]);
@@ -19,9 +18,9 @@ async function sendMessage(e: React.FormEvent) {
 e.preventDefault();
 if (!msg.trim()) return;
 setLog((l) => [YOU: ${msg}, ...l]);
+const echo = msg.toUpperCase();
 setMsg("");
-// Placeholder “AI” echo
-setTimeout(() => setLog((l) => [AI: ${msg.toUpperCase()}, ...l]), 200);
+setTimeout(() => setLog((l) => [AI: ${echo}, ...l]), 200);
 }
 
 async function uploadFile() {
@@ -47,8 +46,7 @@ return (
 <p style={{ opacity: 0.7, marginBottom: 16 }}>
 Build OK. Basic chat, API ping, and file upload are enabled.
 </p>
-
-text
+  
   <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
     <button
       onClick={callPing}
